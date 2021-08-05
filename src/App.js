@@ -7,6 +7,8 @@ function App() {
 
 const [city, setCity] = useState('')
 const [data, setData] = useState({})
+const [sectionOpen, setSectionOpen] = useState(false)
+
 
 let key = process.env.REACT_APP_KEY;
 
@@ -23,6 +25,9 @@ let getData = e => {
   fetch(`${api}weather?q=${city}&appid=${key}`)
   .then(res => res.json())
   .then(result => {
+    setSectionOpen(false)
+    setData(result)
+    setSectionOpen(true)
     console.log(result)
   })
   
@@ -45,11 +50,19 @@ console.log(process.env.REACT_APP_KEY);
     </form>
     </section>
 
-  <section className="output">
-  <p>{city}</p>
-  <p>{temp}</p>
+{(typeof data.main != "undefined") ? (
+
+<section className={sectionOpen ? 'output' : 'hide'}>
+  <p>{data.name}, {data.sys.country}</p>
+  <p>{data.main.temp}</p>
   </section>
 
+):
+('')
+}
+
+
+  
 
   </main>
     </section>
