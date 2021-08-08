@@ -59,15 +59,26 @@ let getData = e => {
   (
 
   <section className={sectionOpen ? 'output' : 'hide'}>
-  <p>{data.name}, {data.sys.country}</p>
+    
+    <article className="location">
+    <p className="small-text">Location:</p>
+  <p className="big-text">{data.name}, {data.sys.country}</p>
+    </article>
+    
+    <article className="date">
+    <p className="small-text">Day:</p>
+  <p className="big-text">{currentDate}</p>
+    </article>
   
-  <p>{currentDate}</p>
-
-  <p>{Math.round(data.main.temp)}°</p>
+  <article className="weather-desc">
+  <p className="small-text">Weather:</p>
+  <p className="big-text">{Math.round(data.main.temp)}°</p>
   <span>
-  <p className="weather-desc" style={{textTransform: 'capitalize'}}>{data.weather[0].description}</p>
+  <p className="big-text" style={{textTransform: 'capitalize'}}>{data.weather[0].description}</p>
   <img src={`https://api.openweathermap.org/img/w/${data.weather[0].icon}`} alt="weather-icon"  />
-  </span>
+  </span>   
+  </article>
+ 
   </section>
 
 ) :

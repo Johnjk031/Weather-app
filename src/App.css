@@ -26,14 +26,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    flex-wrap: wrap;
 }
 .app::after {
     content: "";
     background-image: url("https://icon-library.com/images/weather-icon-gif/weather-icon-gif-15.jpg"); 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     opacity: 0.2;
     position: fixed; 
     z-index: -1;
@@ -77,3 +77,39 @@ form {
     font-size: 1rem;
     color: white;
 }
+
+.small-text {
+    color: black;
+    font-size: 1rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.big-text {
+    color: white;
+    font-size: 2.1rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.location, .date, .weather-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.5rem;
+}
+
+
+@media screen and (max-width: 800px) {
+    .app::after {
+     background-size: contain;
+    }
+  }
+  @media screen and (max-width: 428px) {
+    .app::after {
+     background-size: cover;
+    }
+  }
